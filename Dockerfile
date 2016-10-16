@@ -17,6 +17,10 @@ RUN mkdir -p $STRIDER_SRC && cd $STRIDER_SRC && \
     rm -rf .git && \
     # Install NPM deps
     npm install && \
+    # Updated version of Docker runner as NPM version is outdated
+    npm i git+https://github.com/Strider-CD/strider-docker-runner.git --save && \
+    # Install scheduler plugin
+    npm i git+https://github.com/bitwit/strider-scheduler.git --save && \
     # Create link to strider home dir so the modules can be used as a cache
     mv node_modules node_modules.cache && ln -s ${STRIDER_HOME}/node_modules node_modules && \
     # Allow strider user to update .restart file
